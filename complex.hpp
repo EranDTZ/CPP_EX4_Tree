@@ -21,6 +21,10 @@ public:
         return os;
     }
 
+    bool operator==(const Complex& other) const {
+        return real == other.real && imag == other.imag;
+    }
+
     bool operator>(const Complex& other) const {
         return (real * real + imag * imag) > (other.real * real + other.imag * other.imag);
     }

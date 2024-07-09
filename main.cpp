@@ -40,11 +40,5 @@ int main() {
     }
     std::cout << std::endl;
 
-    std::cout << "Heap (BFS) Traversal: ";
-    for (auto it = t.myHeap(); it != t.end_bfs_scan(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-
     return 0;
 }
