@@ -6,7 +6,7 @@
 int main() {
 
     /*---------------------------------------------TREE-Complex-TEST----------------------------------------*/
-    
+
     Tree<Complex> c;
 
     c.add_root(Complex(1, 2));
@@ -44,19 +44,28 @@ int main() {
     }
     std::cout << std::endl;
 
+    
+    /*---------------------------------------------GUI-TREE-example-2-Complex--------------------------------------*/
+
+
+    TreeGUI<Complex> complexGui(c);
+    complexGui.run();
+
+
+
     /*---------------------------------------------GUI-TREE-example-1-string----------------------------------------*/
 
-    Tree<std::string> k(3);
+    // Tree<std::string> k(3);
 
-    k.add_root("Root");
-    k.add_sub_node("Root", "Child1");
-    k.add_sub_node("Root", "Child2");
-    k.add_sub_node("Root", "Child3");
-    k.add_sub_node("Child1", "Grandchild1");
-    k.add_sub_node("Child1", "Grandchild2");
+    // k.add_root("Root");
+    // k.add_sub_node("Root", "Child1");
+    // k.add_sub_node("Root", "Child2");
+    // k.add_sub_node("Root", "Child3");
+    // k.add_sub_node("Child1", "Grandchild1");
+    // k.add_sub_node("Child1", "Grandchild2");
 
-    // TreeGUI gui(k);
-    // gui.run();
+    // TreeGUI<std::string> strGui(k);
+    // strGui.run();
 
 
     /*---------------------------------------------GUI-TREE-example-2-BIG-string-----------------------------------*/
@@ -119,13 +128,6 @@ int main() {
 
     // TreeGUI<std::string> stringGui(t);
     // stringGui.run();
-
-
-   /*---------------------------------------------GUI-TREE-example-2-Complex--------------------------------------*/
-
-
-    TreeGUI<Complex> complexGui(c);
-    complexGui.run();
 
     /*---------------------------------------------GUI-TREE-example-2-int--------------------------------------*/
 
