@@ -18,6 +18,8 @@ public:
     
     void add_root(const T& val);
     void add_sub_node(const T& parent_val, const T& child_val);
+
+    Node<T>* getRoot() const;
     
     Iterator<T> begin_pre_order();
     Iterator<T> end_pre_order();
@@ -29,6 +31,7 @@ public:
     Iterator<T> end_bfs_scan();
     Iterator<T> begin_dfs_scan();
     Iterator<T> end_dfs_scan();
+    std::string toString() const;
     
 private:
     Node<T>* root;
