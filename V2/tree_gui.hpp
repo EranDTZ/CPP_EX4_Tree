@@ -1,5 +1,4 @@
-/*---------------------------------------------ALL-TYPE--VERSION-3-WORKING!---------------------------------------*/
-/*-------------------------------------------needed to include your own path to Ariel.ttf-------------------------*/
+/*------------------------------------------------------ALL-TYPE--VERSION-2-WORKING!----------------------------------------*/
 
 #ifndef TREE_GUI_HPP
 #define TREE_GUI_HPP
@@ -7,7 +6,6 @@
 #include "tree.hpp"
 #include "complex.hpp"
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include <string>
 
 template <typename T>
@@ -29,7 +27,6 @@ private:
     int screenHeight;
     int nodeWidth;
     int nodeHeight;
-    TTF_Font* font;
 };
 
 // Template specializations
@@ -46,6 +43,3 @@ template <>
 std::string TreeGUI<Complex>::valueToString(const Complex& value);
 
 #endif // TREE_GUI_HPP
-
-
-

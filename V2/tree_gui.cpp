@@ -1,9 +1,10 @@
-/*---------------------------------------------ALL-TYPE--VERSION-3-WORKING!---------------------------------------*/
-/*-------------------------------------------needed to include your own path to Ariel.ttf------------------------*/
+/*------------------------------------------------------ALL-TYPE--VERSION-2-WORKING!----------------------------------------*/
 
 #include "tree_gui.hpp"
 #include <iostream>
 #include <sstream>
+
+// Template specializations for valueToString must come before the template instantiation
 
 template <>
 std::string TreeGUI<int>::valueToString(const int& value) {
@@ -30,14 +31,9 @@ template <typename T>
 TreeGUI<T>::TreeGUI(const Tree<T>& tree)
     : tree(tree), window(nullptr), renderer(nullptr),
       screenWidth(800), screenHeight(600),
-      nodeWidth(100), nodeHeight(50), font(nullptr) {
+      nodeWidth(100), nodeHeight(50) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-    if (TTF_Init() == -1) {
-        std::cerr << "SDL_ttf could not initialize! TTF_Error: " << TTF_GetError() << std::endl;
-        SDL_Quit();
         exit(1);
     }
     window = SDL_CreateWindow("Tree Visualization", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
@@ -53,23 +49,12 @@ TreeGUI<T>::TreeGUI(const Tree<T>& tree)
         SDL_Quit();
         exit(1);
     }
-    font = TTF_OpenFont("/usr/share/fonts/truetype/msttcorefonts/Arial.ttf", 24);  // Updated path to the font file
-    if (font == nullptr) {
-        std::cerr << "Failed to load font! TTF_Error: " << TTF_GetError() << std::endl;
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        TTF_Quit();
-        SDL_Quit();
-        exit(1);
-    }
 }
 
 template <typename T>
 TreeGUI<T>::~TreeGUI() {
-    TTF_CloseFont(font);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
-    TTF_Quit();
     SDL_Quit();
 }
 
@@ -118,20 +103,7 @@ void TreeGUI<T>::drawNode(const std::string& text, int x, int y) {
     SDL_Rect rect = { x, y, nodeWidth, nodeHeight };
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderDrawRect(renderer, &rect);
-
-    SDL_Color textColor = { 0, 0, 0, 255 };
-    SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
-    if (textSurface != nullptr) {
-        SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-        if (textTexture != nullptr) {
-            int textWidth = textSurface->w;
-            int textHeight = textSurface->h;
-            SDL_Rect textRect = { x + (nodeWidth - textWidth) / 2, y + (nodeHeight - textHeight) / 2, textWidth, textHeight };
-            SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
-            SDL_DestroyTexture(textTexture);
-        }
-        SDL_FreeSurface(textSurface);
-    }
+    // Here you can add code to render the text inside the node
 }
 
 // Include the explicit template instantiation at the end of the file
@@ -139,3 +111,4 @@ template class TreeGUI<int>;
 template class TreeGUI<double>;
 template class TreeGUI<std::string>;
 template class TreeGUI<Complex>;
+

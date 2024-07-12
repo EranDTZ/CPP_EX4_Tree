@@ -2,7 +2,7 @@
 #include "complex.hpp"
 
 template<typename T>
-Iterator<T>::Iterator(Node<T>* root, Order order) : current(root), order(order) {
+Iterator<T>::Iterator(Node<T>* root, Order order) : current(nullptr), order(order), index(0) {
     if (root) {
         initialize(root);
     }
@@ -61,9 +61,8 @@ void Iterator<T>::advance() {
             current = nullptr;
         }
     } else {
-        if (!s.empty()) {
-            current = s.top();
-            s.pop();
+        if (index < nodeList.size()) {
+            current = nodeList[index++];
         } else {
             current = nullptr;
         }
@@ -76,7 +75,7 @@ void Iterator<T>::postOrderTraversal(Node<T>* node) {
         for (auto& child : node->children) {
             postOrderTraversal(child);
         }
-        s.push(node);
+        nodeList.push_back(node);
     }
 }
 
@@ -86,7 +85,7 @@ void Iterator<T>::inOrderTraversal(Node<T>* node) {
         if (!node->children.empty()) {
             inOrderTraversal(node->children[0]);
         }
-        s.push(node);
+        nodeList.push_back(node);
         for (std::size_t i = 1; i < node->children.size(); ++i) {
             inOrderTraversal(node->children[i]);
         }

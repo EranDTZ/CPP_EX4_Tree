@@ -32,13 +32,14 @@ public:
     Iterator<T> begin_dfs_scan();
     Iterator<T> end_dfs_scan();
     std::string toString() const;
+    Node<T>* find(Node<T>* node, const T& val);
     
 private:
     Node<T>* root;
     int k;
     
     void deleteTree(Node<T>* node);
-    Node<T>* find(Node<T>* node, const T& val);
+    // Node<T>* find(Node<T>* node, const T& val);
 };
 
 // Include the template implementation

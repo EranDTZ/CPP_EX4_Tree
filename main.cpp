@@ -54,6 +54,11 @@ int main() {
 
 
     /*---------------------------------------------GUI-TREE-example-1-string----------------------------------------*/
+    /* 
+     DISABLE THE TREE BEFORE WITH // COMMENTS
+     AND 
+     FREE THE // COMMENTS TO ENABLE THIS TREE 
+    */
 
     // Tree<std::string> k(3);
 
@@ -69,7 +74,11 @@ int main() {
 
 
     /*---------------------------------------------GUI-TREE-example-2-BIG-string-----------------------------------*/
-
+    /* 
+     DISABLE THE TREE BEFORE WITH // COMMENTS
+     AND 
+     FREE THE // COMMENTS TO ENABLE THIS TREE 
+    */
 
 
     // Tree<std::string> t(3);  // Set k to 3 to allow up to 3 children per node
@@ -122,37 +131,10 @@ int main() {
     // t.add_sub_node("child3_3", "child3_3_1");
     // t.add_sub_node("child3_3", "child3_3_2");
 
-    // // Free this to initialize and run the GUI of t.
-    // // TreeGUI gui(t);
-    // // gui.run();
-
     // TreeGUI<std::string> stringGui(t);
     // stringGui.run();
 
-    /*---------------------------------------------GUI-TREE-example-2-int--------------------------------------*/
-
-    // Tree<int> intTree(3);
-    // intTree.add_root(1);
-    // intTree.add_sub_node(1, 2);
-    // intTree.add_sub_node(1, 3);
-    // intTree.add_sub_node(2, 4);
-
-    // std::cout << "Tree Representation (int): " << intTree.toString() << std::endl;
-
-    // TreeGUI<int> intGui(intTree);
-    // intGui.run();
-
-    /*---------------------------------------------GUI-TREE-example-2-string--------------------------------------*/
-
-    // Tree<std::string> stringTree(3);
-    // stringTree.add_root("Root");
-    // stringTree.add_sub_node("Root", "Child1");
-    // stringTree.add_sub_node("Root", "Child2");
-
-    // std::cout << "Tree Representation (string): " << stringTree.toString() << std::endl;
-
-    // TreeGUI<std::string> stringGui(stringTree);
-    // stringGui.run();
+    /*--------------------------------------------------END----------------------------------------------------*/
 
     return 0;
 }
